@@ -1,0 +1,20 @@
+$background: #fff;
+$text: #0b1829;
+$textLighter: #30496A;
+$main: #b6cdea;
+$loginInactive: #d8d8d8;
+$sharp: #003170;
+$courseHovered: #d1e2f9;
+$imageCard: #a7bedb;
+
+@mixin v-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
