@@ -70,32 +70,30 @@ server.post('/api/login', async (req, res) => {
         return
     }
 
-    if (records.rows.length > 0) {
-        if(await compare(password, records.rows[0].password)){
+    if (records.rows.length > 0 && await compare(password, records.rows[0].password)) {
 
-            const refreshToken = jwt.sign(
-                { activeUser: email },
-                process.env.REFRESH_TOKEN_SECRET,
-                { expiresIn: '45d' }
-            )
+        const refreshToken = jwt.sign(
+            { activeUser: email },
+            process.env.REFRESH_TOKEN_SECRET,
+            { expiresIn: '45d' }
+        )
 
-            try{
-                await dbClient.query('insert into auth.sessions ("token", user_id) select $1, "id" from auth.users where email = $2', [refreshToken, email])
-            } catch (e){
-                console.error('Error at /api/login inserting new session\n', e.stack)
-                res.sendStatus(500)
-                return
-            }
-
-            res.cookie('refreshToken', refreshToken, {
-                httpOnly: true,
-                secure: secure,
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 60 * 24 * 45,
-            })
-
-            sendNewAccessToken(res, {activeUser: email})
+        try{
+            await dbClient.query('insert into auth.sessions ("token", user_id) select $1, "id" from auth.users where email = $2', [refreshToken, email])
+        } catch (e){
+            console.error('Error at /api/login inserting new session\n', e.stack)
+            res.sendStatus(500)
+            return
         }
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: secure,
+            sameSite: 'strict',
+            maxAge: 1000 * 60 * 60 * 24 * 45,
+        })
+
+        sendNewAccessToken(res, {activeUser: email})
     } else {
         res.sendStatus(401)
     }

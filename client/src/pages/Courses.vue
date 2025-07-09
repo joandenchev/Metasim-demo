@@ -5,7 +5,7 @@ import {global} from "../global.js"
 async function logout(){
   const res = await fetch('/api/logout', { method: 'POST' })
 
-  if (res.ok) global.authToken = false
+  if (res.ok) { global.authToken = false; alert('Logged out.') }
   else console.error('Failed to log out: ' + res.status)
 }
 </script>
