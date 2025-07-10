@@ -87,6 +87,7 @@ server.post('/api/login', async (req, res) => {
         }
 
         res.cookie('refreshToken', refreshToken, {
+            path: '/api/login',
             httpOnly: true,
             secure: secure,
             sameSite: 'strict',

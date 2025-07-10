@@ -39,9 +39,6 @@ const loginButtonBackground = computed(()=>{
 })
 
 function togglePasswordVisibility() {
-  if (hidePassword.value) {
-
-  }
   hidePassword.value = !hidePassword.value
 }
 
