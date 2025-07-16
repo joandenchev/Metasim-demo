@@ -1,4 +1,4 @@
-import {searchCourses as searchCoursesInDb, updateDescription, updateTitle} from "../models/database.js";
+import {searchCourses as searchCoursesInDb, updateDescription, updateTitle} from "../data-bridge/database.js";
 
 export async function searchCourses(search){
     return searchCoursesInDb(search)

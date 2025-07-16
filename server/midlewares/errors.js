@@ -7,6 +7,6 @@ export class CustomError extends Error {
 }
 
 export function globalErrorHandler(err, req, res, next) {
-    console.error('Error detected: \n' + err)
+    console.error(err)
     res.status(err.status ?? 500).send('Error processing your request.')
 }

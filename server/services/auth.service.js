@@ -1,5 +1,5 @@
 import {compare} from "bcrypt";
-import {deleteSessionByToken, findUserByEmail, getSessionsByUserId, insertRefreshToken} from "../models/database.js";
+import {deleteSessionByToken, findUserByEmail, getSessionsByUserId, insertRefreshToken} from "../data-bridge/database.js";
 import {CustomError} from "../midlewares/errors.js";
 import {signNewAccessToken, signNewRefreshToken, verifyRefreshToken} from "./tokens.js";
 
