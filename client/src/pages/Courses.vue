@@ -3,10 +3,10 @@ import CoursesContainer from "@/components/CoursesContainer.vue"
 import {global} from "../global.js"
 
 async function logout(){
-  const res = await fetch('/api/logout', { method: 'POST' })
+  const res = await fetch('/api/auth/logout', { method: 'POST' })
 
   if (res.ok) { global.authToken = false; alert('Logged out.') }
-  else console.error('Failed to log out: ' + res.status)
+  else { console.error('Failed to log out: ' + res.status) }
 }
 </script>
 

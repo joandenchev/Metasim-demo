@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node start.js",
-    "startHttps": "node start.js -s",
-    "dev": "nodemon start.js",
-    "devHttps": "nodemon start.js -- -s"
+    "start": "node server.js",
+    "startHttps": "node server.js -s",
+    "dev": "nodemon server.js",
+    "devHttps": "nodemon server.js -- -s"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
